@@ -25,10 +25,14 @@ def log(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', log),
-    # include 参数1要设置为元组（urlconf_module, app_name）
-    # namespace 设置命名空间
+    # include 的参数中 我们首先来设置一个元祖 urlconf_module, app_name
+    # urlconf_module  子应用的路由
+    # app_name  子应用的名字/home/clt/下载/blog/templates/index.html
     path('', include(('users.urls', 'users'), namespace='users')),
     path('', include(('home.urls', 'home'), namespace='home')),
 ]
 
-
+# 图片访问的路由
+from django.conf import settings
+from django.conf.urls.static import static
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

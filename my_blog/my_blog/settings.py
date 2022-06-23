@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #子应用的注册
     'users.apps.UsersConfig',
+    'home.apps.HomeConfig',
 ]
 
 MIDDLEWARE = [
@@ -201,7 +203,14 @@ LOGGING = {
 # 配置信息 为 ‘子应用名.模型类型’
 AUTH_USER_MODEL='users.User'
 
+#修改系统的未登录跳转连接
+LOGIN_URL='/login/'
 
+#设置上传的图片 保存到media目录下
+MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
+
+#设置图片访问的统一路由
+MEDIA_URL = '/media/'
 
 
 
