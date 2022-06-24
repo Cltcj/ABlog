@@ -387,8 +387,15 @@ class UserCenterView(LoginRequiredMixin,View):
 
 
 from django.views import View
+from home.models import ArticleCategory
 class WriteBlogView(LoginRequiredMixin,View):
 
     def get(self,request):
+        # 获取博客分类信息
+        categories = ArticleCategory.objects.all()
 
-        return render(request,'write_blog.html')
+        context = {
+            'categories': categories
+        }
+        return render(request,'write_blog.html',context=context)
+
