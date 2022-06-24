@@ -19,8 +19,8 @@ import logging
 from django.http import HttpResponse
 from django.urls import path,include
 
-def log(request):
-    return HttpResponse('test')
+# def log(request):
+#     return HttpResponse('test')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
